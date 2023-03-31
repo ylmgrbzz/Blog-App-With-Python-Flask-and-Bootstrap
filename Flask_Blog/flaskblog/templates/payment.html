@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="container">
+    <h1>Payment for "{{ post.title }}"</h1>
+    <p>The price of the post is ${{ order_total }}.</p>
+    <form>
+      <div class="form-group">
+        <label for="payment_method">Select Payment Method:</label>
+        <select class="form-control" id="payment_method">
+          <option>Credit Card</option>
+          <option>PayPal</option>
+          <option>Bank Transfer</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit Payment</button>
+    </form>
+  </div>
+{% endblock content %}

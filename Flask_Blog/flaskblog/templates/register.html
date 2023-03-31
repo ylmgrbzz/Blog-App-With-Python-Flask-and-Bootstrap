@@ -1,0 +1,42 @@
+{% extends "layout.html" %} {% block content %}
+<div class="container my-5 outline-none">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-6">
+      <div class="card w-100">
+        <div class="card-header text-center">
+          <h3 class="mt-2">Join Us Today</h3>
+        </div>
+        <div class="card-body mt-1">
+          <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset>
+              {% for field in form %} {% if field.type != 'HiddenField' and
+              field.type != 'SubmitField' %}
+              <div class="form-group mt-2">
+                {{ field.label(class="form-control-label") }} {% if field.errors
+                %} {{ field(class="form-control is-invalid") }}
+                <div class="invalid-feedback mt-3">
+                  {% for error in field.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+                {% else %} {{ field(class="form-control") }} {% endif %}
+              </div>
+              {% endif %} {% endfor %}
+            </fieldset>
+            <div class="form-group mt-2 d-flex justify-content-center">
+              {{ form.submit(class="btn btn-primary btn-block") }}
+            </div>
+          </form>
+        </div>
+        <div class="card-footer text-muted text-center">
+          <small>
+            Already have an account?
+            <a href="{{ url_for('users.login') }}">Sign In</a>
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %} {% block styles %} {% endblock styles %}

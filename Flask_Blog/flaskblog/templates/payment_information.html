@@ -1,0 +1,25 @@
+{% extends "layout.html" %} {% block content %}
+<div class="container mt-5 d-flex flex-column align-items-center">
+  <h1 class="mb-4">Payment Information</h1>
+  <p class="mb-4">The price of the post is ${{ price }}.</p>
+  <form
+    action="{{ url_for('main.process_payment', post_id=post.id) }}"
+    method="POST"
+    class="w-50"
+  >
+    <div class="form-group mb-3">
+      <label for="payment_method" class="form-label"
+        >Select Payment Method:</label
+      >
+      <select class="form-select" id="payment_method">
+        <option>Credit Card</option>
+        <option>PayPal</option>
+        <option>Bank Transfer</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary mx-auto d-block">
+      Submit Payment
+    </button>
+  </form>
+</div>
+{% endblock content %}
